@@ -1,0 +1,671 @@
+/*                                 Polices
+==============================================================================*/
+
+@font-face {
+    font-family: 'freebooter_scriptregular';
+    src: url('../Fonts/freebooterscript-webfont.eot');
+    src: url('../Fonts/freebooterscript-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../Fonts/freebooterscript-webfont.woff') format('woff'),
+    url('../Fonts/freebooterscript-webfont.ttf') format('truetype'),
+    url('../Fonts/freebooterscript-webfont.svg#freebooter_scriptregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+/*                              Eléments de base
+==============================================================================*/
+
+body {
+
+    width: 100%;
+    margin: 0;
+    background-color: #efefef;
+    color: #666666;
+    font-family: "Palatino Linotype", Arial, sans-serif;
+
+}
+
+#page-wrap {
+
+    width: 100%;
+    position: relative;
+    z-index: 2;
+    margin-bottom: 40vh;
+
+}
+
+footer {
+
+    width: 100%;
+    height: 40vh;
+    background: #060606;
+    color: #efefef;
+    position: fixed;
+    bottom: 0;
+    z-index: 0;
+
+}
+
+footer a {
+
+    color: #efefef;
+    text-decoration: none;
+    opacity: 0.7;
+    transition: all 800ms ease-in-out
+
+}
+
+footer a:hover {
+
+    color: #efefef;
+    opacity: 1;
+    text-decoration: none;
+
+}
+
+footer a:focus {
+
+    color: #efefef;
+
+}
+
+#footer-content {
+
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    height: 40vh;
+    margin: 0 auto;
+
+}
+
+#footer-content a {
+
+    width: 100%;
+
+}
+
+#socials {
+
+    width: 100%;
+
+}
+
+#socials a {
+
+    margin: 0 20px;
+
+}
+
+.flex-row {
+
+    display: flex;
+    flex-direction: row;
+
+}
+
+.flex-column {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+    width: 100%;
+
+}
+
+.col-2 {
+
+    width: 45%;
+
+}
+
+.col-3 {
+
+    width: 33.3%;
+
+}
+
+/*                            Block Header
+==============================================================================*/
+
+#home-wrap header {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    background: url(../Images/headerBackground.jpg);
+    background-size: cover;
+    background-position: center;
+    font-family: 'freebooter_scriptregular', "Palatino Linotype", sans-serif;
+
+}
+
+#header-title {
+
+    color: black;
+    font-family: 'freebooter_scriptregular', "Palatino Linotype", sans-serif;
+    font-size: 5em;
+    -webkit-transform: rotate(345deg);
+    -moz-transform: rotate(345deg);
+    -o-transform: rotate(345deg);
+    text-shadow: 2px 5px 3px #666666;
+    margin-top: 20px;
+    opacity: 0.5;
+
+}
+
+#header-subtitle {
+
+    color: black;
+    font-family: 'freebooter_scriptregular', "Palatino Linotype", sans-serif;
+    font-size: 5em;
+    -webkit-transform: rotate(345deg);
+    -moz-transform: rotate(345deg);
+    -o-transform: rotate(345deg);
+    text-shadow: 2px 5px 3px #666666;
+    opacity: 0.5;
+
+}
+
+#enter-button {
+
+    color: black;
+    font-family: 'freebooter_scriptregular', "Palatino Linotype", sans-serif;
+    font-size: 6em;
+    background-color: transparent;
+    border: none;
+    margin-top: 200px;
+    height: 100px;
+    width: 200px;
+    -webkit-transform: rotate(345deg);
+    -moz-transform: rotate(345deg);
+    -o-transform: rotate(345deg);
+    text-shadow: 2px 5px 3px #666666;
+    outline-style: none;
+    opacity: 0.5;
+    transition: all 800ms ease;
+
+}
+
+#bouton-entrer:hover {
+
+    color: plum;
+    opacity: 0.8;
+
+}
+
+/*                                Navbar
+==============================================================================*/
+
+#myScrollspy {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    z-index: 3;
+    font-family: 'freebooter_scriptregular', "Palatino Linotype", sans-serif;
+    width: 100%;
+    height: 20vh;
+    padding: 0 50px;
+    background: #efefef;
+    transition: all 0.3s ease-in-out;
+
+}
+
+#menu li {
+
+    margin: 0 30px;
+
+}
+
+#menu a {
+
+    font-size: 2em;
+    font-weight: bold;
+    color: #060606;
+    opacity: 0.6;
+    transition: all 800ms ease;
+
+}
+
+#menu a:hover {
+
+    text-decoration: none;
+    opacity: 1;
+
+}
+
+#menu a:focus {
+
+    opacity: 1;
+    text-decoration: none;
+
+}
+
+#logo a {
+
+    font-size: 5em;
+    color: #060606;
+    opacity: 0.7;
+    transition: all 800ms ease;
+
+}
+
+#logo a:hover {
+
+    opacity: 1;
+    text-decoration: none;
+
+}
+
+#logo a:focus {
+
+    opacity: 1;
+    text-decoration: none;
+
+}
+
+#logo:hover {
+
+    opacity: 1;
+
+}
+
+/*                          Home Page Introduction
+==============================================================================*/
+
+
+
+#introduction {
+
+    background: url(../Images/introductionBackground.jpg);
+    background-size: cover;
+    width: 100%;
+    height: 110vh;
+
+}
+
+#introduction-overlay {
+
+    width: 100%;
+    height: 110vh;
+    background: rgba(0, 0, 0, 0.9);
+    padding: 5vh 50px;
+
+}
+
+.text-introduction {
+
+    width: 100%;
+    height: 15vh;
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 0.3s ease-in-out;
+
+}
+
+.text-introduction.is-showing {
+
+    opacity: 1;
+    transform: translateX(0px);
+
+}
+
+.text-introduction p {
+
+    display: flex;
+    align-items: center;
+    width: 60%;
+    height: 15vh;
+    color: #efefef;
+
+}
+
+/*                           Home Page Carousel
+==============================================================================*/
+
+#blog {
+
+    width: 100%;
+    height: 120vh;
+    font-family: "Palatino Linotype", sans-serif;
+    background: url('../Images/blogBackground.jpg');
+    background-size: cover;
+    color: #efefef;
+
+}
+
+#blog-overlay {
+
+    width: 100%;
+    height: 120vh;
+    background-color: rgba(20, 0, 0, 0.9);
+    padding: 20vh 0px;
+
+}
+
+#blog h2 {
+
+    margin-bottom: 10px;
+    font-family: 'freebooter_scriptregular', "Palatino Linotype", sans-serif;
+    font-size: 4em;
+
+}
+
+.carousel-inner {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    padding: 0 200px;
+    overflow: hidden;
+    opacity: 0.7;
+    transition: all 800ms ease-in-out;
+
+}
+
+.carousel-inner:hover {
+
+    opacity: 1;
+
+}
+
+.carousel-inner a {
+
+    color: #efefef;
+    text-decoration: none;
+    margin-bottom: 40px;
+
+}
+
+.carousel-inner .postContent {
+
+    color: #efefef;
+    text-decoration: none;
+    height: 400px;
+
+}
+
+#carousel-control-left, #carousel-control-right {
+
+    background: transparent;
+    transition: all 800ms ease-in-out;
+
+}
+
+#carousel-control-left:hover, #carousel-control-right:hover {
+
+    color: #efefef;
+
+}
+
+/*                              Post details
+==============================================================================*/
+
+#post-section, #comments-section {
+
+    width: 100%;
+    padding: 50px 100px;
+
+}
+
+#post-content {
+
+    margin-bottom: 10vh;
+
+}
+
+#post-content h1 {
+
+    font-family: 'freebooter_scriptregular', "Palatino Linotype", sans-serif;
+    font-size: 5em;
+    margin-bottom: 50px;
+
+}
+
+#post-buttons {
+
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 20vh;
+
+}
+
+#post-buttons button {
+
+    width: 200px;
+    height: 12vh;
+    padding: auto;
+    outline-style: none;
+    background-color: transparent;
+    color: #666;
+    border: 2px solid #666;
+    opacity: 0.8;
+    transition: all 800ms ease;
+
+}
+
+#post-buttons button:hover {
+
+    background-color: #666;
+    color: #efefef;
+    opacity: 1;
+
+}
+
+.separator {
+
+    border: 0;
+    height: 1px;
+    background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+    background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+    background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+    background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+
+}
+
+#comments-section h2 {
+
+    font-family: 'freebooter_scriptregular', "Palatino Linotype", sans-serif;
+    font-size: 4em;
+    margin-bottom: 50px;
+
+}
+
+#comments-header {
+
+    width: 100%;
+    justify-content: space-between;
+
+}
+
+#post-response {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 50vh;
+    background: #060606;
+    color: #efefef;
+    opacity: 0.4;
+    border-radius: 5px;
+    transition: all 800ms ease-in-out;
+
+}
+
+#post-response:hover {
+
+    opacity: 0.7;
+
+}
+
+#post-response-form {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 80%;
+    height: 40vh;
+
+}
+
+#post-response-form input, #post-response-form textarea {
+
+    width: 100%;
+    color: #060606;
+
+}
+
+#post-response button {
+
+    background: #337ab7;
+    border-color: #2e6da4;
+    color: #efefef;
+    transition: all 800ms ease-in-out;
+
+}
+
+#post-response button:hover {
+
+    background: #5cb85c;
+    border-color: #4cae4c;
+
+}
+
+#post-comments-CTA {
+
+    justify-content: center;
+    align-items: center;
+
+}
+
+#comments-CTA {
+
+    justify-content: flex-start;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 60%;
+
+}
+
+#comments-CTA h3 {
+
+    font-family: 'freebooter_scriptregular', "Palatino Linotype", sans-serif;
+    font-size: 3em;
+    color: #666666;
+
+}
+
+#comments-CTA:hover {
+
+    cursor: pointer;
+
+}
+
+#drawn-arrow {
+
+    height: 15vh;
+    width: 100%;
+    background: url('../Images/hand-drawn-arrow.png') no-repeat;
+    background-size: contain;
+    background-position: bottom;
+    opacity: 0.7;
+    transform: rotate(110deg);
+
+}
+
+#comments-content {
+
+    padding-top: 50px;
+
+}
+
+#comments-content dl {
+
+    min-height: 25vh;
+    width: 100%;
+    padding: 0;
+    font-family: "Palatino Linotype", sans-serif;
+    opacity: 0.7;
+    transition: all 800ms ease;
+
+}
+
+#comments-content dl:hover {
+
+    opacity: 1;
+
+}
+
+#comments-content dt {
+
+    display: flex;
+    align-items: center;
+    min-height: 7vh;
+    width: 100%;
+    color: #efefef;
+    background-color: #666;
+    padding-left: 20px;
+
+}
+
+#comments-content dd {
+
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    min-height: 18vh;
+    color: #666;
+
+}
+
+.comment-content {
+
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    min-height: 17vh;
+    width: 70%;
+
+}
+
+.comment-buttons {
+
+    align-items: center;
+    justify-content: space-around;
+    min-height: 17vh;
+    width: 30%;
+
+}
+
+.comment, .no-comment {
+
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: all 1s ease-in-out;
+
+}
+
+.sub-comment {
+
+    margin: 10px 0 10px 50px;
+
+}
+
+.comment.is-showing, .no-comment.is-showing {
+
+    opacity: 1;
+    transform: translateX(0px);
+
+}
