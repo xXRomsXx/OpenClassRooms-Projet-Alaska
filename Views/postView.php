@@ -2,109 +2,114 @@
 
 <?php ob_start(); ?>
 
-  <div id = "page-wrap">
+    <div id = "page-wrap">
 
-    <section id = "post-section" class = "text-center">
+        <div id = "flash-message"></div>
 
-      <div id = "post-content">
+        <section id = "post-section" class = "text-center">
 
-        <h1><?= $post->title; ?></h1>
+            <div id = "post-content">
 
-        <p><?= $post->content; ?></p>
+                <h1><?= $post->title; ?></h1>
 
-        <h5 class = "pull-right">écrit par <?= $post->author; ?>, le <?= $post->date_fr; ?></h5>
+                <p><?= $post->content; ?></p>
 
-      </div>
-
-      <div id = "post-buttons" class = "flex-row">
-
-        <a href = "?action=homePage"><button class = "btn btn-lg"><i class="glyphicon glyphicon-home"></i> Retour à l'accueil</button></a>
-
-        <a href = "?action=postDetails&id=1"><button class = "btn btn-lg"><i class="glyphicon glyphicon-chevron-left"></i><i class="glyphicon glyphicon-chevron-left"></i> Premier chapitre</button></a>
-
-        <a href = "?action=postDetails&id=<?= $post->id - 1; ?>"><button class = "btn btn-lg"><i class="glyphicon glyphicon-chevron-left"></i> Chapitre précédent</button></a>
-
-        <a href = "?action=postDetails&id=<?= $post->id + 1; ?>"><button class = "btn btn-lg">Chapitre suivant <i class="glyphicon glyphicon-chevron-right"></i></button></a>
-
-        <a href = "?action=postDetails&id=<?= $latestPost->id; ?>"><button class = "btn btn-lg">Dernier chapitre <i class="glyphicon glyphicon-chevron-right"></i><i class="glyphicon glyphicon-chevron-right"></i></button></a>
-
-      </div>
-
-    </section>
-
-    <hr class = "separator" />
-
-    <section id = "comments-section">
-
-      <h2 class = "text-center">Commentaires</h2>
-
-      <div id = "comments-header" class = "flex-row">
-
-        <div id = "post-response" class = "text-center col-2">
-
-          <h3>commenter cet article:</h3>
-
-          <form id = "post-response-form" action = "#" method = "post">
-
-            <div>
-
-              <label for = "name">Votre nom:</label>
-              <input type = "text" id = "name" name = "name" class = "form-control" required />
+                <h5 class = "pull-right">écrit par <?= $post->author; ?>, le <?= $post->date_fr; ?></h5>
 
             </div>
 
-            <div>
+            <div id = "post-buttons" class = "flex-row">
 
-              <label for = "content">Votre commentaire:</label>
-              <textarea id = "content" name = "content" class = "form-control" required></textarea>
+                <a href = "?action=homePage"><button class = "btn btn-lg"><i class="glyphicon glyphicon-home"></i> Retour à l'accueil</button></a>
 
-            </div>
+                <a href = "?action=postDetails&id=1"><button class = "btn btn-lg"><i class="glyphicon glyphicon-chevron-left"></i><i class="glyphicon glyphicon-chevron-left"></i> Premier chapitre</button></a>
 
-            <button type = "submit" class = "btn">Commenter</button>
+                <a href = "?action=postDetails&id=<?= $post->id - 1; ?>"><button class = "btn btn-lg"><i class="glyphicon glyphicon-chevron-left"></i> Chapitre précédent</button></a>
 
-          </form>
+                <a href = "?action=postDetails&id=<?= $post->id + 1; ?>"><button class = "btn btn-lg">Chapitre suivant <i class="glyphicon glyphicon-chevron-right"></i></button></a>
 
-        </div> <!-- post-response -->
+                <a href = "?action=postDetails&id=<?= $latestPost->id; ?>"><button class = "btn btn-lg">Dernier chapitre <i class="glyphicon glyphicon-chevron-right"></i><i class="glyphicon glyphicon-chevron-right"></i></button></a>
 
-        <div id = "post-comments-CTA" class = "text-center col-2 flex-row">
+              </div>
 
-          <div id = "comments-CTA" class = "flex-column">
+          </section>
 
-            <h3>Voir les commentaires</h3>
+          <hr class = "separator" />
 
-            <div id = "drawn-arrow"></div>
+          <section id = "comments-section">
 
-          </div>
+              <h2 class = "text-center">Commentaires</h2>
 
-        </div>
+              <div id = "comments-header" class = "flex-row">
 
-      </div> <!-- comments-header -->
+                  <div id = "post-response" class = "text-center col-2">
 
-      <div id = "comments-content">
+                      <button id = "show-post-response-form" class = "btn btn-primary">commenter cet article</button>
 
-      <?php
+                      <form id = "post-response-form" action = "?action=addComment" method = "post">
 
-        if($comments) {
+                          <div>
 
-          foreach($comments as $comment) {
+                              <label for = "name">Votre nom:</label>
+                              <input type = "text" id = "name" name = "name" class = "form-control" required />
 
-            require('comments.php');
+                          </div>
 
-          }
+                          <div>
 
-        } else {
+                              <label for = "content">Votre commentaire:</label>
+                              <textarea id = "content" name = "content" class = "form-control" required></textarea>
 
-            ?><div class = "well no-comment text-center">Aucuns commentaire...</div><?php
+                          </div>
 
-        }
+                          <input type = "hidden" name = "post_id" value = "<?= $post->id; ?>" />
+                          <input type = "hidden" name = "parent_id" value = "null" />
 
-      ?>
+                          <button type = "submit" class = "btn">Commenter</button>
+
+                      </form>
+
+                  </div> <!-- post-response -->
+
+                  <div id = "post-comments-CTA" class = "text-center col-2 flex-row">
+
+                      <div id = "comments-CTA" class = "flex-column">
+
+                          <h3>Voir les commentaires</h3>
+
+                          <div id = "drawn-arrow"></div>
+
+                      </div>
+
+                  </div>
+
+              </div> <!-- comments-header -->
+
+              <div id = "comments-content">
+
+                  <?php
+
+                  if($comments) {
+
+                      foreach($comments as $comment) {
+
+                          require('comments.php');
+
+                      }
+
+                  } else {
+
+                      ?><div class = "well no-comment text-center">Aucuns commentaire...</div><?php
+
+                  }
+
+                  ?>
+
+              </div>
+
+          </section>
 
       </div>
-
-    </section>
-
-  </div>
 
 <?php $bodyContent = ob_get_clean(); ?>
 

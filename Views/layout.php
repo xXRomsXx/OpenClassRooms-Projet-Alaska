@@ -34,8 +34,8 @@
 
                     <ul class = "list-unstyled list-inline">
 
-                        <li><a href = "#"><i class="fa fa-lg fa-facebook" aria-hidden="true"></i></a></li>
-                        <li><a href = "#"><i class="fa fa-lg fa-twitter" aria-hidden="true"></i></a></li>
+                        <li><a href = "https://Jean-Forteroche.facebook.com"><i class="fa fa-lg fa-facebook" aria-hidden="true"></i></a></li>
+                        <li><a href = "https://Jean-Forteroche.twitter.com"><i class="fa fa-lg fa-twitter" aria-hidden="true"></i></a></li>
 
                     </ul>
 
@@ -43,7 +43,7 @@
 
                     <ul class = "list-unstyled list-inline">
 
-                        <li><a href = "#"><i class="fa fa-lg fa-amazon" aria-hidden="true"></i></a></li>
+                        <li><a href = "http://Jean-Forteroche.amazon.com"><i class="fa fa-lg fa-amazon" aria-hidden="true"></i></a></li>
 
                     </ul>
 
@@ -51,7 +51,7 @@
 
                 <div class = "col-3 text-center">
 
-                    <a href = "#" id = "administration" class = "col-xs-3">Administration du site</a>
+                    <a href = "?action=adminPanel" id = "administration" class = "col-xs-3">Administration du site</a>
 
                 </div>
 

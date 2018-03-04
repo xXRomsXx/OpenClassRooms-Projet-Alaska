@@ -45,6 +45,12 @@ class Post {
     }
 
     /**
+    * @var int
+    */
+
+    private $reported;
+
+    /**
      * Get id
      *
      * @return int
@@ -163,6 +169,34 @@ class Post {
     public function setDate($date) {
 
         $this->date = $date;
+
+        return $this;
+
+    }
+
+    /**
+     * Get reported
+     *
+     * @return int
+     */
+
+    public function getReported() {
+
+        return $this->reported;
+
+    }
+
+    /**
+     * Set reported
+     *
+     * @param int $reported
+     *
+     * @return Post
+     */
+
+    public function setReported($reported) {
+
+        $this->reported = $reported;
 
         return $this;
 

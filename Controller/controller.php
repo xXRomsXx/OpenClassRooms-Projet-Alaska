@@ -1,6 +1,7 @@
 <?php
 
-require('Model\PostManager.php');
+require('Model/PostManager.php');
+require('Model/CommentManager.php');
 
 function homePage() {
 
@@ -18,10 +19,11 @@ function homePage() {
 function postDetails($id) {
 
     $postManager = new PostManager();
+    $commentManager = new CommentManager();
 
     $post = $postManager->getPost($id);
     $latestPost = $postManager->getLatestPost();
-    $comments = $postManager->getComments($id);
+    $comments = $commentManager->getComments($id);
 
     foreach($comments as $comment) {
 
@@ -41,5 +43,22 @@ function postDetails($id) {
     }
 
     require('Views/postView.php');
+
+}
+
+function addComment($name, $content, $post_id, $parent_id) {
+
+    $commentManager = new CommentManager();
+    $commentManager->addComment($name, $content, $post_id, $parent_id);
+
+    header("Location: ?action=postDetails&id=" . $post_id);
+
+}
+
+function reported($id) {
+
+    $commentManager = new CommentManager();
+
+    $commentManager->reportComment($id);
 
 }

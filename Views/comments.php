@@ -1,23 +1,31 @@
 <dl id = "comment-<?= $comment->id ?>" class = "well comment">
 
-  <dt>Commentaire écrit par <?= $comment->author ?> le <?= $comment->date_fr ?></dt>
-  <dd>
+    <dt>Commentaire écrit par <?= $comment->author ?> le <?= $comment->date_fr ?></dt>
+    <dd>
 
-    <div class = "comment-content flex-row">
+        <div class = "comment-content flex-row">
 
-      <p><?= $comment->content ?></p>
+            <p><?= $comment->content ?></p>
 
-    </div>
+        </div>
 
-    <div class = "comment-buttons flex-column">
+        <div class = "comment-buttons flex-column">
 
-      <button class = "comment-response btn">Répondre</button>
-      <button class = "report-button btn">Signaler ce commentaire</button>
+            <?php
 
-    </div>
+            if($comment->depth < 3) { ?>
 
-  </dd>
+                <button class = "comment-response-button btn" data-id = "<?= $comment->id ?>">Répondre</button> <?php
 
+            }
+
+            ?>
+
+            <button class = "report-button btn" data-id = "<?= $comment->id ?>">Signaler ce commentaire</button>
+
+        </div>
+
+    </dd>
 
 </dl>
 

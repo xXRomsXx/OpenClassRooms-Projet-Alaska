@@ -35,6 +35,45 @@ body {
 
 }
 
+#flash-message {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100px;
+    top: 0;
+    position: fixed;
+    font-size: 1.4em;
+    color: #efefef;
+    opacity: 0.8;
+    z-index: 5;
+
+}
+
+.message {
+
+    display: flex;
+    align-items: center;
+
+}
+
+.error-message {
+
+    background-color: #AA3333;
+    border-top: 2px solid #880000;
+    border-bottom: 2px solid #880000;
+
+}
+
+.success-message {
+
+    background-color: #5cb85c;
+    border-top: 2px solid #4cae4c;
+    border-bottom: 2px solid #4cae4c;
+
+}
+
 footer {
 
     width: 100%;
@@ -509,6 +548,24 @@ footer a:focus {
 
 }
 
+#show-post-response-form {
+
+    height: 80px;
+    width: 80%;
+    font-size: 2em;
+    opacity: 0.7;
+    padding: auto;
+    outline-style: none;
+    transition: all 800ms ease-in-out;
+
+}
+
+#show-post-response-form:hover {
+
+    opacity: 1;
+
+}
+
 #post-response-form {
 
     display: flex;
@@ -526,7 +583,7 @@ footer a:focus {
 
 }
 
-#post-response button {
+#post-response-form button {
 
     background: #337ab7;
     border-color: #2e6da4;
@@ -535,7 +592,7 @@ footer a:focus {
 
 }
 
-#post-response button:hover {
+#post-response-form button:hover {
 
     background: #5cb85c;
     border-color: #4cae4c;
@@ -646,6 +703,28 @@ footer a:focus {
     justify-content: space-around;
     min-height: 17vh;
     width: 30%;
+
+}
+
+.comment-buttons button {
+
+    width: 60%;
+    height: 50px;
+    padding: auto;
+    outline-style: none;
+    background-color: transparent;
+    color: #666;
+    border: 2px solid #666;
+    opacity: 0.8;
+    transition: all 800ms ease;
+
+}
+
+.comment-buttons button:hover {
+
+    background-color: #666;
+    color: #efefef;
+    opacity: 1;
 
 }
 

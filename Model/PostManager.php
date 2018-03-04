@@ -1,6 +1,6 @@
 <?php
 
-require('Manager.php');
+require_once('Manager.php');
 
 class PostManager extends Manager {
 
@@ -35,17 +35,6 @@ class PostManager extends Manager {
         $post = $req->fetch();
 
         return $post;
-
-    }
-
-    public function getComments($id) {
-
-        $db = $this->dbConnect();
-        $req = $db->prepare('SELECT id, author, content, parent_id, DATE_FORMAT(date, \'%d/%m/%Y à %Hh%i\') AS date_fr from comments WHERE post_id = ?');
-        $req->execute(array($id));
-        $comments = $req->fetchAll();
-
-        return $comments;
 
     }
 
