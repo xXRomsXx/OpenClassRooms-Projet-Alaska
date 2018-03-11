@@ -24,7 +24,7 @@
 
                 <div class = "col-3 text-center">
 
-                    <a href = "#"><i class="fa fa-copyright" aria-hidden="true"></i> Rom's 2017</a>
+                    <a href = "http://romaingravier.fr"><i class="fa fa-copyright" aria-hidden="true"></i> Rom's 2017</a>
 
                 </div>
 

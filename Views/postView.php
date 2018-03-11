@@ -99,7 +99,7 @@
 
                   } else {
 
-                      ?><div class = "well no-comment text-center">Aucuns commentaire...</div><?php
+                      ?><div class = "well no-comment text-center">Aucuns commentaires...</div><?php
 
                   }
 
