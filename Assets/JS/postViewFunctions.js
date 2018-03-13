@@ -15,6 +15,15 @@ $(function() {
   $comContent.hide();
   $form.hide();
 
+  $('#flash-message').delay(1500).fadeOut('600');
+  setTimeout(function() {
+
+      $('.message').remove();
+      $('#flash-message').removeClass('error-message');
+      $('#flash-message').removeClass('success-message');
+
+  }, 2200);
+
   /*            Show post response form           */
 
   $showFormButton.on('click', function(e) {

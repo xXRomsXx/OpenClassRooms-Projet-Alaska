@@ -10,10 +10,8 @@ require('Model/UserManager.php');
 function homePage() {
 
     $postManager = new PostManager();
-
     $posts = $postManager->getPosts();
     $last = array_pop($posts);
-
     $latestPost = $postManager->getLatestPost();
 
     require('Views/homePage.php');
@@ -52,17 +50,43 @@ function postDetails($id) {
 
 function addComment($name, $content, $post_id, $parent_id) {
 
-    $commentManager = new CommentManager();
-    $commentManager->addComment($name, $content, $post_id, $parent_id);
+    if(!isset($name) || $name == '') {
 
-    header("Location: ?action=postDetails&id=" . $post_id);
+        header("Location: ?action=postDetails&id=" . $post_id);
+        $_SESSION['type'] = 'error';
+        $_SESSION['message'] = 'Veuillez saisir un nom';
+        exit();
+
+    } else if(!isset($content) || $content == '') {
+
+        header("Location: ?action=postDetails&id=" . $post_id);
+        $_SESSION['type'] = 'error';
+        $_SESSION['message'] = 'Veuillez saisir votre commentaire';
+        exit();
+
+    } else if(!isset($post_id) || !is_int($post_id) || $post_id == '') {
+
+        header("Location: ?action=postDetails&id=" . $post_id);
+        $_SESSION['type'] = 'error';
+        $_SESSION['message'] = 'Une erreur est survenue, Votre commentaire n\a pas été envoyé';
+        exit();
+
+    } else {
+
+        $commentManager = new CommentManager();
+        $commentManager->addComment($name, $content, $post_id, $parent_id);
+
+        header("Location: ?action=postDetails&id=" . $post_id);
+        $_SESSION['type'] = 'success';
+        $_SESSION['message'] = 'Commentaire ajouté avec succès';
+
+    }
 
 }
 
 function reported($id) {
 
     $commentManager = new CommentManager();
-
     $commentManager->reportComment($id);
 
 }
@@ -85,7 +109,7 @@ function adminPanel($email, $password) {
 
     } else {
 
-        if(!isset($email) && !empty($email)) {
+        if(!isset($email) && empty($email)) {
 
             header('location: ?action=adminConnexionPanel');
             $_SESSION['type'] = 'error';
@@ -109,7 +133,6 @@ function adminPanel($email, $password) {
         } else {
 
             $userManager = new UserManager();
-
             $user = $userManager->userVerify($email, $password);
 
             if(!empty($user)) {
@@ -156,7 +179,6 @@ function addPost() {
 function postsList() {
 
     $postManager = new PostManager();
-
     $posts = $postManager->getPosts();
 
     require('Views/postsList.php');
@@ -166,7 +188,6 @@ function postsList() {
 function commentsList() {
 
     $commentManager = new CommentManager();
-
     $comments = $commentManager->getAllComments();
     $reportedComments = $commentManager->getReportedComments();
 
@@ -176,19 +197,45 @@ function commentsList() {
 
 function addNewPost($title, $name, $content) {
 
-    $postManager = new PostManager();
-    $postManager->addNewPost($title, $name, $content);
-    $latestPost = $postManager->getLatestPost();
-    $id = $latestPost->id;
+    if(!isset($name) && empty($name)) {
 
-    header("Location: ?action=postDetails&id=" . $id);
+        header("Location: ?action=addPost");
+        $_SESSION['type'] = 'error';
+        $_SESSION['message'] = 'Veuillez entrer un nom';
+        exit();
+
+    } else if (!isset($title) && empty($title)) {
+
+        header("Location: ?action=addPost");
+        $_SESSION['type'] = 'error';
+        $_SESSION['message'] = 'Veuillez entrer un titre';
+        exit();
+
+    } else if (!isset($content) && empty($content)) {
+
+        header("Location: ?action=addPost");
+        $_SESSION['type'] = 'error';
+        $_SESSION['message'] = 'Veuillez entrer un contenu';
+        exit();
+
+    } else {
+
+        $postManager = new PostManager();
+        $postManager->addNewPost($title, $name, $content);
+        $latestPost = $postManager->getLatestPost();
+        $id = $latestPost->id;
+
+        header("Location: ?action=postDetails&id=" . $id);
+        $_SESSION['type'] = 'success';
+        $_SESSION['message'] = 'Article ajouté avec succès';
+
+    }
 
 }
 
 function postEdit($id) {
 
     $postManager = new PostManager();
-
     $post = $postManager->getPost($id);
 
     require('Views/postEdit.php');
@@ -197,28 +244,54 @@ function postEdit($id) {
 
 function postUpdate($id, $title, $name, $content) {
 
-    $postManager = new PostManager();
+    if(!isset($name) && empty($name)) {
 
-    $postManager->postUpdate($id, $title, $name, $content);
+        header("Location: ?action=postEdit&id=" . $id);
+        $_SESSION['type'] = 'error';
+        $_SESSION['message'] = 'Veuillez entrer un nom';
+        exit();
 
-    header("location: ?action=postDetails&id=" . $id);
+    } else if (!isset($title) && empty($title)) {
+
+        header("Location: ?action=postEdit&id=" . $id);
+        $_SESSION['type'] = 'error';
+        $_SESSION['message'] = 'Veuillez entrer un titre';
+        exit();
+
+    } else if (!isset($content) && empty($content)) {
+
+        header("Location: ?action=postEdit&id=" . $id);
+        $_SESSION['type'] = 'error';
+        $_SESSION['message'] = 'Veuillez entrer un contenu';
+        exit();
+
+    } else {
+
+        $postManager = new PostManager();
+        $postManager->postUpdate($id, $title, $name, $content);
+
+        header("location: ?action=postDetails&id=" . $id);
+        $_SESSION['type'] = 'success';
+        $_SESSION['message'] = 'Article modifié avec succès';
+
+    }
 
 }
 
 function postDelete($id) {
 
     $postManager = new PostManager();
-
     $postManager->postDelete($id);
 
     header("location: ?action=postsList");
+    $_SESSION['type'] = 'success';
+    $_SESSION['message'] = 'Article supprimé avec succès';
 
 }
 
 function commentEdit($id) {
 
     $commentManager = new CommentManager();
-
     $comment = $commentManager->getComment($id);
 
     require('Views/commentEdit.php');
@@ -227,20 +300,40 @@ function commentEdit($id) {
 
 function commentUpdate($id, $name, $content) {
 
-    $commentManager = new CommentManager();
+    if(!isset($name) && empty($name)) {
 
-    $commentManager->commentUpdate($id, $name, $content);
+        header("Location: ?action=commentEdit&id=" . $id);
+        $_SESSION['type'] = 'error';
+        $_SESSION['message'] = 'Veuillez entrer un nom';
+        exit();
 
-    header("location: ?action=commentsList");
+    }  else if (!isset($content) && empty($content)) {
+
+        header("Location: ?action=commentEdit&id=" . $id);
+        $_SESSION['type'] = 'error';
+        $_SESSION['message'] = 'Veuillez entrer un contenu';
+        exit();
+
+    } else {
+
+        $commentManager = new CommentManager();
+        $commentManager->commentUpdate($id, $name, $content);
+
+        header("location: ?action=commentsList");
+        $_SESSION['type'] = 'success';
+        $_SESSION['message'] = 'Commentaire modifié avec succès';
+
+    }
 
 }
 
 function commentDelete($id) {
 
     $commentManager = new CommentManager();
-
     $commentManager->commentDelete($id);
 
     header("location: ?action=commentsList");
+    $_SESSION['type'] = 'success';
+    $_SESSION['message'] = 'Commentaire supprimé avec succès';
 
 }

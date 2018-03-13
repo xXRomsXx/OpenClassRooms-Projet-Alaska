@@ -2,6 +2,8 @@ var $navXs = $('#menu-xs');
 var $hamburger = $('#icon');
 $navXs.hide();
 
+$('#flash-message').delay(1500).fadeOut('600');
+
 /*                  Click Hamburger menu                */
 
 $hamburger.on('click', function() {

@@ -65,6 +65,23 @@
 
             <div id = "page-content">
 
+                <div id = "flash-message">
+
+                    <?php
+
+                        if(isset($_SESSION['message'])) { ?>
+
+                            <div id = "php-flash-message" class = "<?= $_SESSION['type']; ?>-message"><p class = "message"><?= $_SESSION['message']; ?></p></div> <?php
+
+                            unset($_SESSION['message']);
+                            unset($_SESSION['type']);
+
+                        }
+
+                    ?>
+
+                </div>
+
                 <?= $bodyContent ?>
 
             </div>

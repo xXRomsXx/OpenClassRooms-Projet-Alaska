@@ -6,42 +6,24 @@ class CommentManager extends Manager {
 
     public function addComment($name, $content, $post_id, $parent_id) {
 
-        if(!isset($name) || $name == '') {
+        $db = $this->dbConnect();
+        $req = $db->prepare('SELECT depth FROM comments WHERE id = ?');
+        $req->execute(array($parent_id));
+        $parent = $req->fetch();
 
-            $message = 'Veuillez saisir un nom';
+        if($parent_id != null) {
 
-        } else if(!isset($content) || $content == '') {
-
-            $message = 'Veuillez saisir votre commentaire';
-
-        } else if(!isset($post_id) || !is_int($post_id) || $post_id == '') {
-
-            $message = 'Erreur: votre commentaire n\'a pas été envoyé';
+            $depth = $parent->depth + 1;
 
         } else {
 
-            $message = 'Commentaire ajouté avec succès';
-
-            $db = $this->dbConnect();
-            $req = $db->prepare('SELECT depth FROM comments WHERE id = ?');
-            $req->execute(array($parent_id));
-            $parent = $req->fetch();
-
-            if($parent_id != null) {
-
-                $depth = $parent->depth + 1;
-
-            } else {
-
-                $depth = 0;
-
-            }
-
-
-            $req = $db->prepare("INSERT INTO comments(author, content, date, post_id, parent_id, reported, depth) VALUES(?, ?, ?, ?, ?, ?, ?)");
-            $req->execute(array($name, $content, date('Y-m-d H:i:s'), $post_id, $parent_id, 0, $depth));
+            $depth = 0;
 
         }
+
+
+        $req = $db->prepare("INSERT INTO comments(author, content, date, post_id, parent_id, reported, depth) VALUES(?, ?, ?, ?, ?, ?, ?)");
+        $req->execute(array($name, $content, date('Y-m-d H:i:s'), $post_id, $parent_id, 0, $depth));
 
         return $message;
 

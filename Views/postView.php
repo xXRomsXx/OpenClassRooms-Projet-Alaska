@@ -6,11 +6,16 @@
 
         <?php
 
-            if(isset($_SESSION['flash'])) { ?>
+            if(isset($_SESSION['message'])) { ?>
 
-                <div id = "flash-message" class = "<?= $_SESSION['flash']['type']; ?>-message"><p><?= $_SESSION['flash']['message']; ?></p></div> <?php
+                <div id = "flash-message" class = "<?= $_SESSION['type']; ?>-message"><p class = "message"><?= $_SESSION['message']; ?></p></div> <?php
 
-                unset($_SESSION['flash']);
+                unset($_SESSION['message']);
+                unset($_SESSION['type']);
+
+            } else { ?>
+
+                <div id = "flash-message"></div> <?php
 
             }
 

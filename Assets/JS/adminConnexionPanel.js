@@ -3,7 +3,7 @@ var $connexionButton = $('#admin-connexion-form button');
 $('footer').hide();
 $('#flash-message').hide();
 
-$('#php-flash-message').delay(2000).fadeOut(600);
+$('#php-flash-message').delay(1500).fadeOut(600);
 
 $connexionButton.on('click', function(e) {
 
