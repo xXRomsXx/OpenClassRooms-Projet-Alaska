@@ -1,7 +1,11 @@
 <?php
 
+session_start();
+//session_destroy();
+
 require('Model/PostManager.php');
 require('Model/CommentManager.php');
+require('Model/UserManager.php');
 
 function homePage() {
 
@@ -63,7 +67,81 @@ function reported($id) {
 
 }
 
-function adminPanel() {
+function adminConnexionPanel() {
+
+    if(isset($_SESSION['email']) && isset($_SESSION['password'])) {
+
+        header('location: ?action=adminPanel');
+
+    }
+
+    require('Views/adminConnexionPanel.php');
+
+}
+
+function adminPanel($email, $password) {
+
+    if(isset($_SESSION['email']) && isset($_SESSION['password'])) {
+
+    } else {
+
+        if(!isset($email) && !empty($email)) {
+
+            header('location: ?action=adminConnexionPanel');
+            $_SESSION['type'] = 'error';
+            $_SESSION['message'] = 'Veuillez entrer un email';
+            exit();
+
+        } else if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+
+            header('location: ?action=adminConnexionPanel');
+            $_SESSION['type'] = 'error';
+            $_SESSION['message'] = 'Veuillez entrer un email valide';
+            exit();
+
+        } else if(!isset($password)) {
+
+            header('location: ?action=adminConnexionPanel');
+            $_SESSION['type'] = 'error';
+            $_SESSION['message'] = 'Veuillez entrer un mot de passe';
+            exit();
+
+        } else {
+
+            $userManager = new UserManager();
+
+            $user = $userManager->userVerify($email, $password);
+
+            if(!empty($user)) {
+
+                    if($user->password != $password) {
+
+                        header('location: ?action=adminConnexionPanel');
+                        $_SESSION['type'] = 'error';
+                        $_SESSION['message'] = 'Email ou mot de passe incorrect';
+                        exit();
+
+                    } else {
+
+                        $_SESSION['email'] = $email;
+                        $_SESSION['password'] = $password;
+                        $_SESSION['type'] = 'success';
+                        $_SESSION['message'] = 'Vous êtes maintenant connecté';
+
+                    }
+
+            } else {
+
+                header('location: ?action=adminConnexionPanel');
+                $_SESSION['type'] = 'error';
+                $_SESSION['message'] = 'Email ou mot de passe incorrect';
+                exit();
+
+            }
+
+        }
+
+    }
 
     require('Views/adminHome.php');
 

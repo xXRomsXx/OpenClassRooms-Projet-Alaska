@@ -4,7 +4,17 @@
 
     <div id = "page-wrap">
 
-        <div id = "flash-message"></div>
+        <?php
+
+            if(isset($_SESSION['flash'])) { ?>
+
+                <div id = "flash-message" class = "<?= $_SESSION['flash']['type']; ?>-message"><p><?= $_SESSION['flash']['message']; ?></p></div> <?php
+
+                unset($_SESSION['flash']);
+
+            }
+
+        ?>
 
         <section id = "post-section" class = "text-center">
 

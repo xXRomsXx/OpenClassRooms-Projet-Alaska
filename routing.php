@@ -26,8 +26,8 @@ try {
 
         } else if($_GET['action'] == 'addComment') {
 
-            $name = $_POST['name'];
-            $content = $_POST['content'];
+            $name = htmlspecialchars($_POST['name']);
+            $content = htmlspecialchars($_POST['content']);
             $post_id = intval($_POST['post_id']);
 
             if($_POST['parent_id'] === "null") {
@@ -48,96 +48,217 @@ try {
 
             reported($id);
 
+        } else if($_GET['action'] == 'adminConnexionPanel') {
+
+            if(isset($_SESSION['email']) && isset($_SESSION['password'])) {
+
+                $email = "";
+                $password = "";
+
+                adminPanel($email, $password);
+
+            } else {
+
+                adminConnexionPanel();
+
+            }
+
         } else if($_GET['action'] == 'adminPanel') {
 
-            adminPanel();
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+                $email = htmlspecialchars($_POST['email']);
+                $password = htmlspecialchars($_POST['password']);
+
+                adminPanel($email, $password);
+
+            } else {
+
+                if(isset($_SESSION['email']) && isset($_SESSION['password'])) {
+
+                    $email = "";
+                    $password = "";
+
+                    adminPanel($email, $password);
+
+                } else {
+
+                    adminConnexionPanel();
+
+                }
+
+            }
 
         } else if($_GET['action'] == 'addPost') {
 
-            addPost();
+            if(isset($_SESSION['email']) && isset($_SESSION['password'])) {
+
+                addPost();
+
+            } else {
+
+                adminConnexionPanel();
+
+            }
 
         } else if($_GET['action'] == 'postsList') {
 
-            postslist();
+            if(isset($_SESSION['email']) && isset($_SESSION['password'])) {
+
+                postsList();
+
+            } else {
+
+                adminConnexionPanel();
+
+            }
 
         } else if($_GET['action'] == 'commentsList') {
 
-            commentsList();
+            if(isset($_SESSION['email']) && isset($_SESSION['password'])) {
+
+                commentsList();
+
+            } else {
+
+                adminConnexionPanel();
+
+            }
 
         } else if($_GET['action'] == 'addNewPost') {
 
-            $title = $_POST['title'];
-            $name = $_POST['name'];
-            $content = $_POST['content'];
+            if(isset($_SESSION['email']) && isset($_SESSION['password'])) {
 
-            addNewPost($title, $name, $content);
+                $title = $_POST['title'];
+                $name = $_POST['name'];
+                $content = $_POST['content'];
+
+                addNewPost($title, $name, $content);
+
+            } else {
+
+                adminConnexionPanel();
+
+            }
 
         } else if($_GET['action'] == 'postEdit') {
 
-            if(isset($_GET['id']) && $_GET['id'] > 0) {
+            if(isset($_SESSION['email']) && isset($_SESSION['password'])) {
 
-                $id = intval($_GET['id']);
+                if(isset($_GET['id']) && $_GET['id'] > 0) {
+
+                    $id = intval($_GET['id']);
+
+                }
+
+                postEdit($id);
+
+            } else {
+
+                adminConnexionPanel();
 
             }
-
-            postEdit($id);
 
         } else if($_GET['action'] == 'postUpdate') {
 
-            $title = $_POST['title'];
-            $name = $_POST['name'];
-            $content = $_POST['content'];
+            if(isset($_SESSION['email']) && isset($_SESSION['password'])) {
 
-            if(isset($_GET['id']) && $_GET['id'] > 0) {
+                $title = $_POST['title'];
+                $name = $_POST['name'];
+                $content = $_POST['content'];
 
-                $id = intval($_GET['id']);
+                if(isset($_GET['id']) && $_GET['id'] > 0) {
+
+                    $id = intval($_GET['id']);
+
+                }
+
+                postUpdate($id, $title, $name, $content);
+
+            } else {
+
+                adminConnexionPanel();
 
             }
-
-            postUpdate($id, $title, $name, $content);
 
         } else if($_GET['action'] == 'postDelete') {
 
-            if(isset($_GET['id']) && $_GET['id'] > 0) {
+            if(isset($_SESSION['email']) && isset($_SESSION['password'])) {
 
-                $id = intval($_GET['id']);
+                if(isset($_GET['id']) && $_GET['id'] > 0) {
+
+                    $id = intval($_GET['id']);
+
+                }
+
+                postDelete($id);
+
+            } else {
+
+                adminConnexionPanel();
 
             }
-
-            postDelete($id);
 
         } else if($_GET['action'] == 'commentEdit') {
 
-            if(isset($_GET['id']) && $_GET['id'] > 0) {
+            if(isset($_SESSION['email']) && isset($_SESSION['password'])) {
 
-                $id = intval($_GET['id']);
+                if(isset($_GET['id']) && $_GET['id'] > 0) {
+
+                    $id = intval($_GET['id']);
+
+                }
+
+                commentEdit($id);
+
+            } else {
+
+                adminConnexionPanel();
 
             }
-
-            commentEdit($id);
 
         } else if($_GET['action'] == 'commentUpdate') {
 
-            $name = $_POST['name'];
-            $content = $_POST['content'];
+            if(isset($_SESSION['email']) && isset($_SESSION['password'])) {
 
-            if(isset($_GET['id']) && $_GET['id'] > 0) {
+                $name = $_POST['name'];
+                $content = $_POST['content'];
 
-                $id = intval($_GET['id']);
+                if(isset($_GET['id']) && $_GET['id'] > 0) {
+
+                    $id = intval($_GET['id']);
+
+                }
+
+                commentUpdate($id, $name, $content);
+
+            } else {
+
+                adminConnexionPanel();
 
             }
-
-            commentUpdate($id, $name, $content);
 
         } else if($_GET['action'] == 'commentDelete') {
 
-            if(isset($_GET['id']) && $_GET['id'] > 0) {
+            if(isset($_SESSION['email']) && isset($_SESSION['password'])) {
 
-                $id = intval($_GET['id']);
+                if(isset($_GET['id']) && $_GET['id'] > 0) {
+
+                    $id = intval($_GET['id']);
+
+                }
+
+                commentDelete($id);
+
+            } else {
+
+                adminConnexionPanel();
 
             }
 
-            commentDelete($id);
+        } else {
+
+            homePage();
 
         }
 

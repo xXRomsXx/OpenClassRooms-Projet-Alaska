@@ -51,7 +51,7 @@
 
                 <div class = "col-3 text-center">
 
-                    <a href = "?action=adminPanel" id = "administration" class = "col-xs-3">Administration du site</a>
+                    <a href = "?action=adminConnexionPanel" id = "administration" class = "col-xs-3">Administration du site</a>
 
                 </div>
 
