@@ -48,6 +48,12 @@ try {
 
             reported($id);
 
+        } else if($_GET['action'] == 'unreport') {
+
+            $id = $_POST['id'];
+
+            unreport($id);
+
         } else if($_GET['action'] == 'adminConnexionPanel') {
 
             if(isset($_SESSION['email']) && isset($_SESSION['password'])) {

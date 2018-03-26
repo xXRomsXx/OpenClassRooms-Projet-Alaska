@@ -32,6 +32,7 @@
                     <td><?= $reportedComment->content; ?></td>
                     <td id = "table-buttons">
 
+                        <a><button class = "btnAdminTable unreport-button btn btn-success btn-md" data-id = "<?= $reportedComment->id ?>">Valider</button></a>
                         <a href = "?action=commentEdit&id= <?= $reportedComment->id; ?>"><button class = "btnAdminTable btn btn-warning btn-md">Modifier</button></a>
                         <a href = "?action=commentDelete&id= <?= $reportedComment->id; ?>"><button class = "btnAdminTable btn btn-danger btn-md">Supprimer</button></a>
 
@@ -47,7 +48,7 @@
 
     } else {
 
-        ?><div class = "well no-comment text-center">Aucuns commentaires...</div><?php
+        ?><div class = "well no-comment text-center">Aucun commentaire n'a été signalé...</div><?php
 
     } ?>
 
@@ -93,5 +94,7 @@
 </div>
 
 <?php $bodyContent = ob_get_clean(); ?>
+
+<?php $jScript = 'Assets/JS/commentsList.js'; ?>
 
 <?php require('adminLayout.php'); ?>

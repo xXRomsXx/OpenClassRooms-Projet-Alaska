@@ -91,6 +91,13 @@ function reported($id) {
 
 }
 
+function unreport($id) {
+
+    $commentManager = new CommentManager();
+    $commentManager->unreportComment($id);
+
+}
+
 function adminConnexionPanel() {
 
     if(isset($_SESSION['email']) && isset($_SESSION['password'])) {

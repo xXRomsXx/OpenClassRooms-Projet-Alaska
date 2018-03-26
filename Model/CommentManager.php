@@ -59,6 +59,14 @@ class CommentManager extends Manager {
 
     }
 
+    public function unreportComment($id) {
+
+        $db = $this->dbConnect();
+        $req = $db->prepare('UPDATE comments SET reported = 0 WHERE id = ?');
+        $req->execute(array($id));
+
+    }
+
     public function getAllComments() {
 
         $db = $this->dbConnect();
@@ -82,8 +90,8 @@ class CommentManager extends Manager {
     public function commentUpdate($id, $name, $content) {
 
         $db = $this->dbConnect();
-        $req = $db->prepare('UPDATE comments SET author = ?, content = ? WHERE id = ?');
-        $req->execute(array($name, $content, $id));
+        $req = $db->prepare('UPDATE comments SET author = ?, content = ? , reported = ? WHERE id = ?');
+        $req->execute(array($name, $content, 0, $id));
 
     }
 
