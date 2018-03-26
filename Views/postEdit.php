@@ -27,7 +27,7 @@
 
         </div>
 
-        <input type = "hidden" id = "postContent" value = "<?= $post->content; ?>" />
+        <input type = "hidden" id = "postContent" value = "<?= htmlspecialchars($post->content); ?>" />
 
         <button type = "submit" class = "btn submit-button">Editer l'article</button>
 

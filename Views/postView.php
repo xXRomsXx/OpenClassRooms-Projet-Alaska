@@ -27,7 +27,7 @@
 
                 <h1><?= $post->title; ?></h1>
 
-                <p><?= $post->content; ?></p>
+                <div class = "content"><?= $post->content; ?></div>
 
                 <h5 class = "pull-right">écrit par <?= $post->author; ?>, le <?= $post->date_fr; ?></h5>
 
@@ -35,15 +35,15 @@
 
             <div id = "post-buttons" class = "flex-row">
 
-                <a href = "?action=homePage"><button class = "btn btn-lg"><i class="glyphicon glyphicon-home"></i> Retour à l'accueil</button></a>
+                <a href = "?action=homePage"><button class = "btn btn-lg"><i class="glyphicon glyphicon-home"></i><div class = "hidden-xs hidden-sm">Retour à l'accueil</div></button></a>
 
-                <a href = "?action=postDetails&id=1"><button class = "btn btn-lg"><i class="glyphicon glyphicon-chevron-left"></i><i class="glyphicon glyphicon-chevron-left"></i> Premier chapitre</button></a>
+                <a href = "?action=postDetails&id=1"><button class = "btn btn-lg"><i class="glyphicon glyphicon-chevron-left"></i><i class="glyphicon glyphicon-chevron-left"></i><div class = "hidden-xs hidden-sm">Premier chapitre</div></button></a>
 
-                <a href = "?action=postDetails&id=<?= $post->id - 1; ?>"><button class = "btn btn-lg"><i class="glyphicon glyphicon-chevron-left"></i> Chapitre précédent</button></a>
+                <a href = "?action=postDetails&id=<?= $post->id - 1; ?>"><button class = "btn btn-lg"><i class="glyphicon glyphicon-chevron-left"></i><div class = "hidden-xs hidden-sm">Chapitre précédent</div></button></a>
 
-                <a href = "?action=postDetails&id=<?= $post->id + 1; ?>"><button class = "btn btn-lg">Chapitre suivant <i class="glyphicon glyphicon-chevron-right"></i></button></a>
+                <a href = "?action=postDetails&id=<?= $post->id + 1; ?>"><button class = "btn btn-lg"><i class="glyphicon glyphicon-chevron-right"></i><div class = "hidden-xs hidden-sm">Chapitre suivant</div></button></a>
 
-                <a href = "?action=postDetails&id=<?= $latestPost->id; ?>"><button class = "btn btn-lg">Dernier chapitre <i class="glyphicon glyphicon-chevron-right"></i><i class="glyphicon glyphicon-chevron-right"></i></button></a>
+                <a href = "?action=postDetails&id=<?= $latestPost->id; ?>"><button class = "btn btn-lg"><i class="glyphicon glyphicon-chevron-right"></i><i class="glyphicon glyphicon-chevron-right"></i><div class = "hidden-xs hidden-sm">Dernier chapitre</div></button></a>
 
               </div>
 

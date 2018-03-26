@@ -26,7 +26,7 @@
 
                 <td><?= $post->title; ?></td>
                 <td><?= $post->date_fr; ?></td>
-                <td>
+                <td id = "table-buttons">
 
                     <a href = "?action=postDetails&id= <?= $post->id; ?>"><button class = "btnAdminTable btn btn-info btn-md">Lire</button></a>
                     <a href = "?action=postEdit&id= <?= $post->id; ?>"><button class = "btnAdminTable btn btn-warning btn-md">Modifier</button></a>

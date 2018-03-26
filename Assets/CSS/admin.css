@@ -338,11 +338,43 @@ header a , header a:hover, header a:focus, #menu-xs a, #menu-xs a:hover, #menu-x
 /*                              Medias queries
 ==============================================================================*/
 
+@media (max-width: 810px) {
+
+    /*                  Add Post                    */
+
+    #addPostFormWrap form {
+
+        width: 90%;
+
+    }
+
+    /*                  Posts List                  */
+
+    #postsTable {
+
+        width: 90%;
+
+    }
+
+}
+
 @media (max-width: 768px) {
 
     #page-wrap {
 
         display: block;
+
+    }
+
+    #flash-message {
+
+        width: 100vw;
+
+    }
+
+    #php-flash-message .message {
+
+        width: 100vw;
 
     }
 
@@ -465,6 +497,109 @@ header a , header a:hover, header a:focus, #menu-xs a, #menu-xs a:hover, #menu-x
 
         top:0;
         transform: rotate(135deg);
+
+    }
+
+}
+
+@media screen and (max-width: 620px) {
+
+    /*                  Admin Home Page                  */
+
+    #boxes {
+
+        flex-direction: column;
+        height: 720px;
+
+    }
+
+    .box {
+
+        width: 80%;
+        height: 200px;
+        margin: 20px 0;
+
+    }
+
+    /*                  Add Post                    */
+
+    #addPostFormWrap form {
+
+        width: 95%;
+
+    }
+
+    /*                  Posts List                  */
+
+    #postsTable {
+
+        width: 90%;
+
+    }
+
+    #table-buttons {
+
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    #table-buttons button {
+
+        margin: 10px 0;
+
+    }
+
+}
+
+@media screen and (max-width: 420px) {
+
+    #php-flash-message .message {
+
+        font-size: 1.5rem;
+
+    }
+
+    /*                  Admin Home Page                  */
+
+    h1 {
+
+        font-size: 2rem;
+
+    }
+
+    h3 {
+
+        font-size: 1.5rem;
+
+    }
+
+    #boxes {
+
+        height: 780px;
+
+    }
+
+    .box {
+
+        width: 100%;
+        height: 220px;
+        margin: 20px 0;
+
+    }
+
+    /*                  Add Post                    */
+
+    #addPostFormWrap {
+
+        height: 880px;
+
+    }
+
+    #addPostFormWrap form {
+
+        width: 100%;
+        height: 100%;
 
     }
 

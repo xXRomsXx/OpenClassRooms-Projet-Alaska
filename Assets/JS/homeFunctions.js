@@ -1,12 +1,24 @@
 $(window).on('load', function() {
 
     var $navbar = $('#myScrollspy');
+    var $navXs = $('#menu-xs');
     var $menuLink = $('#myScrollspy a');
+    var $hamburger = $('#icon');
     var $navbarDisplayScrollSpot = $('#header-subtitle');
     var $enterButton = $('#enter-button');
     var $textIntro = $('.text-introduction');
 
     $navbar.hide();
+    $navXs.hide();
+
+    /*                  Click Hamburger menu                */
+
+    $hamburger.on('click', function() {
+
+        $(this).toggleClass('isActive');
+        $navXs.fadeToggle(300);
+
+    });
 
     /*                  Enter button click                 */
 
@@ -14,21 +26,18 @@ $(window).on('load', function() {
 
         $('html,body').animate({
 
-            scrollTop: $enterButton.offset().top + $enterButton.height()
+            scrollTop: $enterButton.offset().top + 150
 
         }, 1500);
 
     });
 
-    /*                  introduction link click                 */
+    /*                  menu-xs link click                 */
 
-    $('#toIntroduction').on('click', function() {
+    $('#menu-xs li').on('click', function() {
 
-        $('html,body').animate({
-
-            scrollTop: $enterButton.offset().top + $enterButton.height()
-
-        }, 1500);
+        $hamburger.toggleClass('isActive');
+        $navXs.fadeToggle(300);
 
     });
 

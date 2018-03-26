@@ -14,13 +14,24 @@
 
             <div id = "icon" class = "navbar-toggle collapsed hidden-lg hidden-md hidden-sm">
 
-                <div id = "hamburger">Hamburger</div>
+                <div id = "hamburger"></div>
 
             </div>
 
             <div id = "menu">
 
                 <ul id = "menu" class = "list-unstyled list-inline">
+
+                    <li><a href = "#intro" id = "toIntroduction">A Propos</a></li>
+                    <li><a href = "#blog">Articles</a></li>
+
+                </ul>
+
+            </div>
+
+            <div id = "menu-xs">
+
+                <ul class = "list-unstyled">
 
                     <li><a href = "#intro" id = "toIntroduction">A Propos</a></li>
                     <li><a href = "#blog">Articles</a></li>
@@ -39,7 +50,7 @@
 
         </header>
 
-        <section id = "introduction">
+        <section id = "intro">
 
             <div id = "introduction-overlay">
 
@@ -47,25 +58,25 @@
 
                     <div class = "text-center text-introduction">
 
-                        <p class = "pull-right">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque orci diam, cursus at congue quis, aliquam ut nisl. Quisque a mauris sollicitudin, rutrum dolor vitae, consectetur libero. Duis tincidunt, elit dignissim pharetra commodo, purus metus euismod arcu, sed suscipit augue sapien id massa. Vivamus lorem ex, finibus in ipsum a, elementum pulvinar nunc. Nam pellentesque bibendum libero, vel fermentum justo..</p>
+                        <p class = "pull-right">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque orci diam, cursus at congue quis, aliquam ut nisl. Quisque a mauris sollicitudin, rutrum dolor vitae, consectetur libero. Duis tincidunt, elit dignissim pharetra commodo, purus metus euismod arcu, sed suscipit augue sapien id massa. Vivamus lorem ex, finibus in ipsum a, elementum pulvinar nunc. Nam pellentesque bibendum libero, vel fermentum justo...</p>
 
                     </div>
 
                     <div class = "text-center text-introduction">
 
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque orci diam, cursus at congue quis, aliquam ut nisl. Quisque a mauris sollicitudin, rutrum dolor vitae, consectetur libero. Duis tincidunt, elit dignissim pharetra commodo, purus metus euismod arcu, sed suscipit augue sapien id massa. Vivamus lorem ex, finibus in ipsum a, elementum pulvinar nunc. Nam pellentesque bibendum libero, vel fermentum justo..</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque orci diam, cursus at congue quis, aliquam ut nisl. Quisque a mauris sollicitudin, rutrum dolor vitae, consectetur libero. Duis tincidunt, elit dignissim pharetra commodo, purus metus euismod arcu, sed suscipit augue sapien id massa. Vivamus lorem ex, finibus in ipsum a, elementum pulvinar nunc. Nam pellentesque bibendum libero, vel fermentum justo...</p>
 
                     </div>
 
                     <div class = "text-center text-introduction">
 
-                        <p class = "pull-right">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque orci diam, cursus at congue quis, aliquam ut nisl. Quisque a mauris sollicitudin, rutrum dolor vitae, consectetur libero. Duis tincidunt, elit dignissim pharetra commodo, purus metus euismod arcu, sed suscipit augue sapien id massa. Vivamus lorem ex, finibus in ipsum a, elementum pulvinar nunc. Nam pellentesque bibendum libero, vel fermentum justo..</p>
+                        <p class = "pull-right">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque orci diam, cursus at congue quis, aliquam ut nisl. Quisque a mauris sollicitudin, rutrum dolor vitae, consectetur libero. Duis tincidunt, elit dignissim pharetra commodo, purus metus euismod arcu, sed suscipit augue sapien id massa. Vivamus lorem ex, finibus in ipsum a, elementum pulvinar nunc. Nam pellentesque bibendum libero, vel fermentum justo...</p>
 
                     </div>
 
                     <div class = "text-center text-introduction">
 
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque orci diam, cursus at congue quis, aliquam ut nisl. Quisque a mauris sollicitudin, rutrum dolor vitae, consectetur libero. Duis tincidunt, elit dignissim pharetra commodo, purus metus euismod arcu, sed suscipit augue sapien id massa. Vivamus lorem ex, finibus in ipsum a, elementum pulvinar nunc. Nam pellentesque bibendum libero, vel fermentum justo..</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque orci diam, cursus at congue quis, aliquam ut nisl. Quisque a mauris sollicitudin, rutrum dolor vitae, consectetur libero. Duis tincidunt, elit dignissim pharetra commodo, purus metus euismod arcu, sed suscipit augue sapien id massa. Vivamus lorem ex, finibus in ipsum a, elementum pulvinar nunc. Nam pellentesque bibendum libero, vel fermentum justo...</p>
 
                     </div>
 
@@ -92,7 +103,7 @@
                             <div class = "item active">
 
                                 <a href = "?action=postDetails&id=<?= $latestPost->id; ?>"><h3><?= $latestPost->title; ?></h3></a>
-                                <a href = "?action=postDetails&id=<?= $latestPost->id; ?>"><div class = "postContent"><?= strlen($latestPost->content) > 2800 ? substr($latestPost->content, 0, 2800) . ' ...' : $latestPost->content; ?></div></a>
+                                <a href = "?action=postDetails&id=<?= $latestPost->id; ?>"><div class = "postContent"><?= strlen($latestPost->content) > 1000 ? substr($latestPost->content, 0, 1000) . ' ...' : $latestPost->content; ?></div></a>
 
                             </div>
 
@@ -101,7 +112,7 @@
                             <div class = "item">
 
                                 <a href = "?action=postDetails&id=<?= $post->id; ?>"><h3><?= $post->title; ?></h3></a>
-                                <a href = "?action=postDetails&id=<?= $post->id; ?>"><div class = "postContent"><?= strlen($post->content) > 2800 ? substr($post->content, 0, 2800) . ' ...' : $post->content; ?></div></a>
+                                <a href = "?action=postDetails&id=<?= $post->id; ?>"><div class = "postContent"><?= strlen($post->content) > 1000 ? substr($post->content, 0, 1000) . ' ...' : $post->content; ?></div></a>
 
                             </div>
 

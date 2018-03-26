@@ -30,7 +30,7 @@
 
                     <td><?= $reportedComment->author; ?></td>
                     <td><?= $reportedComment->content; ?></td>
-                    <td>
+                    <td id = "table-buttons">
 
                         <a href = "?action=commentEdit&id= <?= $reportedComment->id; ?>"><button class = "btnAdminTable btn btn-warning btn-md">Modifier</button></a>
                         <a href = "?action=commentDelete&id= <?= $reportedComment->id; ?>"><button class = "btnAdminTable btn btn-danger btn-md">Supprimer</button></a>
@@ -75,7 +75,7 @@
 
                 <td><?= $comment->author; ?></td>
                 <td><?= $comment->content; ?></td>
-                <td>
+                <td id = "table-buttons">
 
                     <a href = "?action=commentEdit&id= <?= $comment->id; ?>"><button class = "btnAdminTable btn btn-warning btn-md">Modifier</button></a>
                     <a href = "?action=commentDelete&id= <?= $comment->id; ?>"><button class = "btnAdminTable btn btn-danger btn-md">Supprimer</button></a>

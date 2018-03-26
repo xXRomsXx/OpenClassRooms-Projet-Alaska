@@ -138,18 +138,38 @@ $(function() {
 
       e.preventDefault();
 
-      var $this = $(this);
-      var $parent = $this.parent();
-      var $parent_id = $this.data('id');
+      if($(document).width() < 810) {
 
-      $showFormButton.show();
-      $parent.append($form);
+          var $this = $(this);
+          var $container = $this.parent();
+          var $dd = $container.parent();
+          var $parent_id = $this.data('id');
 
-      var $parent_id_input = $parent.find('form').find("input[name='parent_id']");
+          $showFormButton.show();
+          $dd.append($form);
 
-      $form.hide();
-      $form.fadeIn(300);
-      $parent_id_input.attr('value', $parent_id);
+          var $parent_id_input = $dd.find('form').find("input[name='parent_id']");
+
+          $form.hide();
+          $form.fadeIn(300);
+          $parent_id_input.attr('value', $parent_id);
+
+      } else {
+
+          var $this = $(this);
+          var $parent = $this.parent();
+          var $parent_id = $this.data('id');
+
+          $showFormButton.show();
+          $parent.append($form);
+
+          var $parent_id_input = $parent.find('form').find("input[name='parent_id']");
+
+          $form.hide();
+          $form.fadeIn(300);
+          $parent_id_input.attr('value', $parent_id);
+
+      }
 
   });
 

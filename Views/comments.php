@@ -3,7 +3,7 @@
     <dt>Commentaire écrit par <?= $comment->author ?> le <?= $comment->date_fr ?></dt>
     <dd>
 
-        <div class = "comment-content flex-row">
+        <div class = "comment-content flex-column">
 
             <p><?= $comment->content ?></p>
 
@@ -15,13 +15,13 @@
 
             if($comment->depth < 3) { ?>
 
-                <button class = "comment-response-button btn" data-id = "<?= $comment->id ?>">Répondre</button> <?php
+                <button class = "comment-response-button btn" data-id = "<?= $comment->id ?>"><i class="glyphicon glyphicon-comment hidden-sm hidden-md hidden-lg"></i><p class = "hidden-xs">Répondre</p></button> <?php
 
             }
 
             ?>
 
-            <button class = "report-button btn" data-id = "<?= $comment->id ?>">Signaler ce commentaire</button>
+            <button class = "report-button btn" data-id = "<?= $comment->id ?>"><i class="glyphicon glyphicon-bell hidden-sm hidden-md hidden-lg"></i><p class = "hidden-xs">Signaler</p></button>
 
         </div>
 
