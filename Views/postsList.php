@@ -28,9 +28,9 @@
                 <td><?= $post->date_fr; ?></td>
                 <td id = "table-buttons">
 
-                    <a href = "?action=postDetails&id= <?= $post->id; ?>"><button class = "btnAdminTable btn btn-info btn-md">Lire</button></a>
-                    <a href = "?action=postEdit&id= <?= $post->id; ?>"><button class = "btnAdminTable btn btn-warning btn-md">Modifier</button></a>
-                    <a href = "?action=postDelete&id= <?= $post->id; ?>"><button class = "btnAdminTable btn btn-danger btn-md">Supprimer</button></a>
+                    <a href = "?action=postDetails&chapter=<?= $post->chapter; ?>"><button class = "btnAdminTable btn btn-info btn-md">Lire</button></a>
+                    <a href = "?action=postEdit&id=<?= $post->id; ?>"><button class = "btnAdminTable btn btn-warning btn-md">Modifier</button></a>
+                    <a href = "?action=postDelete&id=<?= $post->id; ?>"><button class = "btnAdminTable btn btn-danger btn-md">Supprimer</button></a>
 
                 </td>
 

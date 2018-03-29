@@ -12,15 +12,16 @@ try {
 
         } else if($_GET['action'] == 'postDetails') {
 
-            if(isset($_GET['id']) && $_GET['id'] > 0) {
+            if(isset($_GET['chapter']) && $_GET['chapter'] > 0) {
 
-                $id = intval($_GET['id']);
+                $chapter = intval($_GET['chapter']);
 
-                postDetails($id);
+                postDetails($chapter);
 
             }  else {
 
-                throw new Exception('Cet identifiant d\'article n\'existe pas');
+                $chapter = 1;
+                postDetails($chapter);
 
             }
 
@@ -137,9 +138,10 @@ try {
 
                 $title = $_POST['title'];
                 $name = $_POST['name'];
+                $chapter = intval($_POST['chapter']);
                 $content = $_POST['content'];
 
-                addNewPost($title, $name, $content);
+                addNewPost($title, $name, $chapter, $content);
 
             } else {
 
@@ -171,6 +173,7 @@ try {
 
                 $title = $_POST['title'];
                 $name = $_POST['name'];
+                $chapter = intval($_POST['chapter']);
                 $content = $_POST['content'];
 
                 if(isset($_GET['id']) && $_GET['id'] > 0) {
@@ -179,7 +182,7 @@ try {
 
                 }
 
-                postUpdate($id, $title, $name, $content);
+                postUpdate($id, $title, $name, $chapter, $content);
 
             } else {
 

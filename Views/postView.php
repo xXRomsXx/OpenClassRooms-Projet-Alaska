@@ -37,13 +37,28 @@
 
                 <a href = "?action=homePage"><button class = "btn btn-lg"><i class="glyphicon glyphicon-home"></i><div class = "hidden-xs hidden-sm">Retour à l'accueil</div></button></a>
 
-                <a href = "?action=postDetails&id=1"><button class = "btn btn-lg"><i class="glyphicon glyphicon-chevron-left"></i><i class="glyphicon glyphicon-chevron-left"></i><div class = "hidden-xs hidden-sm">Premier chapitre</div></button></a>
+                <?php
 
-                <a href = "?action=postDetails&id=<?= $post->id - 1; ?>"><button class = "btn btn-lg"><i class="glyphicon glyphicon-chevron-left"></i><div class = "hidden-xs hidden-sm">Chapitre précédent</div></button></a>
+                    if($post->chapter != 1) { ?>
 
-                <a href = "?action=postDetails&id=<?= $post->id + 1; ?>"><button class = "btn btn-lg"><i class="glyphicon glyphicon-chevron-right"></i><div class = "hidden-xs hidden-sm">Chapitre suivant</div></button></a>
+                        <a href = "?action=postDetails&chapter=1"><button class = "btn btn-lg"><i class="glyphicon glyphicon-chevron-left"></i><i class="glyphicon glyphicon-chevron-left"></i><div class = "hidden-xs hidden-sm">Premier chapitre</div></button></a>
+                        <a href = "?action=postDetails&chapter=<?= $post->chapter - 1; ?>"><button class = "btn btn-lg"><i class="glyphicon glyphicon-chevron-left"></i><div class = "hidden-xs hidden-sm">Chapitre précédent</div></button></a>
 
-                <a href = "?action=postDetails&id=<?= $latestPost->id; ?>"><button class = "btn btn-lg"><i class="glyphicon glyphicon-chevron-right"></i><i class="glyphicon glyphicon-chevron-right"></i><div class = "hidden-xs hidden-sm">Dernier chapitre</div></button></a>
+
+                <?php
+
+                    }
+
+                    if($post->chapter != $latestPost->chapter) { ?>
+
+                        <a href = "?action=postDetails&chapter=<?= $post->chapter + 1; ?>"><button class = "btn btn-lg"><i class="glyphicon glyphicon-chevron-right"></i><div class = "hidden-xs hidden-sm">Chapitre suivant</div></button></a>
+                        <a href = "?action=postDetails&chapter=<?= $latestPost->chapter; ?>"><button class = "btn btn-lg"><i class="glyphicon glyphicon-chevron-right"></i><i class="glyphicon glyphicon-chevron-right"></i><div class = "hidden-xs hidden-sm">Dernier chapitre</div></button></a>
+
+                <?php
+
+                    }
+
+                ?>
 
               </div>
 

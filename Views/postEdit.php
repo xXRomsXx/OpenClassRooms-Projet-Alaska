@@ -22,6 +22,13 @@
 
         <div>
 
+            <label for = "chapter">Chapitre:</label>
+            <input type = "text" id = "chapter" name = "chapter" class = "form-control" value = "<?= $post->chapter; ?>" required />
+
+        </div>
+
+        <div>
+
             <label for = "content">Contenu de l'article:</label>
             <textarea id = "content" name = "content" class = "form-control"></textarea>
 

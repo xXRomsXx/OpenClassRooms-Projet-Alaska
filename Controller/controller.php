@@ -18,13 +18,21 @@ function homePage() {
 
 }
 
-function postDetails($id) {
+function postDetails($chapter) {
 
     $postManager = new PostManager();
     $commentManager = new CommentManager();
 
-    $post = $postManager->getPost($id);
     $latestPost = $postManager->getLatestPost();
+
+    if($chapter > $latestPost->chapter) {
+
+        $chapter = $latestPost->chapter;
+
+    }
+
+    $post = $postManager->getPost($chapter);
+    $id = $post->id;
     $comments = $commentManager->getComments($id);
 
     foreach($comments as $comment) {
@@ -202,7 +210,7 @@ function commentsList() {
 
 }
 
-function addNewPost($title, $name, $content) {
+function addNewPost($title, $name, $chapter, $content) {
 
     if(!isset($name) && empty($name)) {
 
@@ -218,6 +226,13 @@ function addNewPost($title, $name, $content) {
         $_SESSION['message'] = 'Veuillez entrer un titre';
         exit();
 
+    }  else if (!isset($chapter) && empty($chapter)) {
+
+        header("Location: ?action=addPost");
+        $_SESSION['type'] = 'error';
+        $_SESSION['message'] = 'Veuillez entrer un chapitre';
+        exit();
+
     } else if (!isset($content) && empty($content)) {
 
         header("Location: ?action=addPost");
@@ -228,11 +243,11 @@ function addNewPost($title, $name, $content) {
     } else {
 
         $postManager = new PostManager();
-        $postManager->addNewPost($title, $name, $content);
+        $postManager->addNewPost($title, $name, $chapter, $content);
         $latestPost = $postManager->getLatestPost();
-        $id = $latestPost->id;
+        $chapter = $latestPost->chapter;
 
-        header("Location: ?action=postDetails&id=" . $id);
+        header("Location: ?action=postDetails&chapter=" . $chapter);
         $_SESSION['type'] = 'success';
         $_SESSION['message'] = 'Article ajouté avec succès';
 
@@ -243,13 +258,13 @@ function addNewPost($title, $name, $content) {
 function postEdit($id) {
 
     $postManager = new PostManager();
-    $post = $postManager->getPost($id);
+    $post = $postManager->adminGetPost($id);
 
     require('Views/postEdit.php');
 
 }
 
-function postUpdate($id, $title, $name, $content) {
+function postUpdate($id, $title, $name, $chapter, $content) {
 
     if(!isset($name) && empty($name)) {
 
@@ -265,6 +280,13 @@ function postUpdate($id, $title, $name, $content) {
         $_SESSION['message'] = 'Veuillez entrer un titre';
         exit();
 
+    } else if (!isset($chapter) && empty($chapter)) {
+
+        header("Location: ?action=postEdit&id=" . $id);
+        $_SESSION['type'] = 'error';
+        $_SESSION['message'] = 'Veuillez entrer un chapitre';
+        exit();
+
     } else if (!isset($content) && empty($content)) {
 
         header("Location: ?action=postEdit&id=" . $id);
@@ -275,9 +297,9 @@ function postUpdate($id, $title, $name, $content) {
     } else {
 
         $postManager = new PostManager();
-        $postManager->postUpdate($id, $title, $name, $content);
+        $postManager->postUpdate($id, $title, $name, $chapter, $content);
 
-        header("location: ?action=postDetails&id=" . $id);
+        header("location: ?action=postDetails&chapter=" . $chapter);
         $_SESSION['type'] = 'success';
         $_SESSION['message'] = 'Article modifié avec succès';
 

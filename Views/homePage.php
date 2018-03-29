@@ -102,8 +102,8 @@
 
                             <div class = "item active">
 
-                                <a href = "?action=postDetails&id=<?= $latestPost->id; ?>"><h3><?= $latestPost->title; ?></h3></a>
-                                <a href = "?action=postDetails&id=<?= $latestPost->id; ?>"><div class = "postContent"><?= strlen($latestPost->content) > 1000 ? substr($latestPost->content, 0, 1000) . ' ...' : $latestPost->content; ?></div></a>
+                                <a href = "?action=postDetails&chapter=<?= $latestPost->chapter; ?>"><h3><?= $latestPost->title; ?></h3></a>
+                                <a href = "?action=postDetails&chapter=<?= $latestPost->chapter; ?>"><div class = "postContent"><?= strlen($latestPost->content) > 1000 ? substr($latestPost->content, 0, 1000) . ' ...' : $latestPost->content; ?></div></a>
 
                             </div>
 
@@ -111,8 +111,8 @@
 
                             <div class = "item">
 
-                                <a href = "?action=postDetails&id=<?= $post->id; ?>"><h3><?= $post->title; ?></h3></a>
-                                <a href = "?action=postDetails&id=<?= $post->id; ?>"><div class = "postContent"><?= strlen($post->content) > 1000 ? substr($post->content, 0, 1000) . ' ...' : $post->content; ?></div></a>
+                                <a href = "?action=postDetails&chapter=<?= $post->chapter; ?>"><h3><?= $post->title; ?></h3></a>
+                                <a href = "?action=postDetails&chapter=<?= $post->chapter; ?>"><div class = "postContent"><?= strlen($post->content) > 1000 ? substr($post->content, 0, 1000) . ' ...' : $post->content; ?></div></a>
 
                             </div>
 

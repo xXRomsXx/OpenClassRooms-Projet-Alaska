@@ -1,6 +1,6 @@
 <?php ob_start() ?>
 
-<h1 class = "text-center">Créer un nouvel article</h1>
+<h1 class = "text-center">Créer un nouveau article</h1>
 
 <div id = "addPostFormWrap">
 
@@ -17,6 +17,13 @@
 
             <label for = "title">Titre de l'article:</label>
             <input type = "text" id = "title" name = "title" class = "form-control" required />
+
+        </div>
+
+        <div>
+
+            <label for = "chapter">Chapitre:</label>
+            <input type = "text" id = "chapter" name = "chapter" class = "form-control" required />
 
         </div>
 
